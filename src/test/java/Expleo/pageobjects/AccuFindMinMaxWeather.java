@@ -1,10 +1,14 @@
 package Expleo.pageobjects;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 public class AccuFindMinMaxWeather {
 
     private String MaxDay1;
+    @FindBy(how=How.XPATH, using = "   *** xpath here ***")
+
     private String MinDay1;
     private String MaxDay2;
     private String MinDay2;
