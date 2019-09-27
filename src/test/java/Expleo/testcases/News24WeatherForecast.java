@@ -1,11 +1,14 @@
 package Expleo.testcases;
 
 import java.util.concurrent.TimeUnit;
+
+import Expleo.pageobjects.News24FindMinMaxWeather;
 import org.junit.*;
 import static org.junit.Assert.*;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class News24WeatherForecast {
     private WebDriver driver;
@@ -39,6 +42,10 @@ public class News24WeatherForecast {
     public void testGetMaxMinTemps() throws Exception {
         driver.get(news24BaseUrl);
 
+        // Use PageObject News24FindMinMaxWeather
+        News24FindMinMaxWeather findMinMax = PageFactory.initElements
+                (driver, News24FindMinMaxWeather.class);
+
         //click dropdown and click city Paarl. then click Go button
         driver.findElement(By.xpath("//*[@id=\"ctl00_WeatherContentHolder_ddlCity\"]")).click();
         Thread.sleep(3000);
@@ -51,17 +58,43 @@ public class News24WeatherForecast {
 
         //print max and min temp for today day 1
         maxTempDay1 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[3]/td[4]")).getText();
-        System.out.println("MAX temp today: " + maxTempDay1);
+        System.out.println("News24 MAX temp today: " + maxTempDay1);
         minTempDay1 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[3]/td[5]")).getText();
-        System.out.println("MIN temp today: " + minTempDay1);
+        System.out.println("News24 MIN temp today: " + minTempDay1);
+
+        // Store temperatures as strings in pageObject
+        findMinMax.setMaxDay1(maxTempDay1);
+        findMinMax.setMaxDay1(minTempDay1);
 
         //print max and min temp for day 2
-        maxTempDay2 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[3]/td[4]")).getText();
-        System.out.println("MAX temp today: " + maxTempDay2);
-        minTempDay2 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[3]/td[5]")).getText();
-        System.out.println("MIN temp today: " + minTempDay2);
+        maxTempDay2 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[4]/td[4]")).getText();
+        System.out.println("News24 MAX temp day2: " + maxTempDay2);
+        minTempDay2 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[4]/td[5]")).getText();
+        System.out.println("News24 MIN temp day2: " + minTempDay2);
 
+        // Store temps as strings in pageObject
+        findMinMax.setMaxDay1(maxTempDay2);
+        findMinMax.setMaxDay1(minTempDay2);
 
+        //print max and min temp for day 3
+        maxTempDay3 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[5]/td[4]")).getText();
+        System.out.println("News24 MAX temp day3: " + maxTempDay3);
+        minTempDay3 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[5]/td[5]")).getText();
+        System.out.println("News24 MIN temp day3: " + minTempDay3);
+
+        // Store temps as strings in pageObject
+        findMinMax.setMaxDay1(maxTempDay3);
+        findMinMax.setMaxDay1(minTempDay3);
+
+        //print max and min temp for day 4
+        maxTempDay4 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[6]/td[4]")).getText();
+        System.out.println("News24 MAX temp day4: " + maxTempDay4);
+        minTempDay4 = driver.findElement(By.xpath("//*[@id=\"forecastContent\"]/table/tbody/tr[6]/td[5]")).getText();
+        System.out.println("News24 MIN temp day4: " + minTempDay4);
+
+        // Store temps as strings in pageObject
+        findMinMax.setMaxDay1(maxTempDay4);
+        findMinMax.setMaxDay1(minTempDay4);
     }
 
     @After

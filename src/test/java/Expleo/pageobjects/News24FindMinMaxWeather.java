@@ -1,8 +1,7 @@
 package Expleo.pageobjects;
 
-import org.openqa.selenium.WebElement;
 
-public class AccuFindMinMaxWeather {
+public class News24FindMinMaxWeather {
 
     private String MaxDay1;
     private String MinDay1;
@@ -18,7 +17,7 @@ public class AccuFindMinMaxWeather {
     }
 
     public void setMaxDay1(String maxDay1) {
-        MaxDay1 = maxDay1;
+        this.MaxDay1 = maxDay1;
     }
 
     public String getMinDay1() {
